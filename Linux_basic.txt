@@ -1,0 +1,627 @@
+Let's work on Linux Basic course with a professional way:
+Common challenges a beginner faces while setting up learning environment:
+Common Challenges…
+• Trouble with navigating Linux CLI
+• Navigating directory structures and files
+• No experience working with text editors- VI editor
+• Different flavors of Linux
+• Errors during installation of applications and /dependencies
+• rpm, dpkg, apt and yum
+• Issues with networking between VMs
+• Trouble with permissions and security in Linux
+• Lack of hands-on practice
+================================
+The Objective of the course:
+Working with Shell-1
+Linux Core Concepts
+Package Management
+Shell & Bash
+Security and File permissions
+Linux Networking
+Storage in Linux
+SystemD and Services
+==================================
+Working with the Shell
+Command Types in Linux:
+		Internal or Built-in Commands
+			echo, cd, pwd, set e.t.c
+To check any command check type example: type echo 
+External Commands
+mv, date, uptime, cp, uptime e.t.c
+ mkdir -p India/Mumbai/biken
+======================
+Absolute and Relative path
+Absolute means: The path from top to bottom
+Relative means: The path direct to the destination
+=================
+popd and pushd: This is a Pro tip 
+===============================
+GETTING HELP IN
+COMMAND LINE
+=====================
+SHELL TYPES
+Bourne Shell (sh)
+C Shell (csh or tcsh)
+Korn Shell (ksh)
+Z Shell (zsh)
+Bourne again Shell (bash)
+
+		echo $SHELL
+			chsh-- to change the shell type /bin/sh
+			sudo chsh -s /bin/sh bob
+			Bash Shell Features
+			alias    alias dt=date
+			history
+=========================
+Bash Environment Variables
+env
+export language=Biken
+=============
+Path Variable
+export PATH=$PATH:/opt/obs/bin
+ which obs-studio
+==============
+Bash Prompt
+echo $PS1
+PS1=“ubuntu-server:”
+ PS1="[\d \t \u@\h:\w ] $ "
+=================================
+Core Concepts
+Linux Core Concepts
+//Introduction to the Linux Kernel
+//Kernel Space and User Space
+//Working with Hardware
+//Linux Boot Sequence
+//SYSTEMD TARGETS (RUNLEVELS)
+//Filesystems and Hierarchy
+===================
+Linux Kernel
+//Memory Management 
+//Device Drivers
+//Monolithic 
+//Process Management
+//System Calls and Security
+//Modular
+=========================
+Kernel Versions
+//uname / uname -r
+4 = Kernel Version
+15 = Major version
+0 = Minor Version
+72 = patch release
+Generic = Distro Specific Info
+=================
+Kernel And User Space
+open()
+close()
+readdir()
+strlen()
+closedir()
+
+======================
+Working with Hardware
+//dmesg
+//dmesg | grep –i usb
+//udevadm info --query=path --name=/dev/sda5
+//udevadm monitor
+//lspci
+//lsblk
+//lscpu
+//lsmem --summary
+//free -m
+//lshw
+//sudo lshw
+======================
+Linux Boot Sequence Overview
+//BIOS POST Boot Loader
+(GRUB2)
+Kernel
+Initialization
+INIT Process
+(systemd) 
+//ls -l /sbin/init
+========
+Systemd Targets
+//runlevel
+=============
+Systemd Target
+(Runlevels)
+===========
+Viewing and
+Changing
+Systemd Target
+//systemctl get-default
+//ls -ltr /etc/systemd/system/default.target
+//systemctl set-default multi-user.target
+====================================
+File Types
+in Linux
+//Regular File
+//Directory
+//Special files
+//Character Files File Types
+in Linux
+Block Files
+Links
+Sockets Files
+Named Pipes
+//file /home/michael/
+===========
+Filesystem Hierarchy
+$ df -hP
+=====================
+Linux Package Management
+dpkg –i gimp.deb
+DPKG
+APT
+RPM
+YUM
+APT
+-GET DNF
+=============
+Installation
+Uninstalling
+Upgrade
+Query
+Verifying
+[~]$ rpm –ivh telnet.rpm
+[~]$ rpm –e telnet.rpm
+[~]$ rpm –Uvh telnet.rpm
+[~]$ rpm –q telnet.rpm
+[~]$ rpm –Vf <path to file>
+=============================
+/etc/yum.repos.d
+/etc/yum.repos.d/redhat.repo
+/etc/yum.repos.d/nginx.repo
+yum repolist
+yum provides scp
+========================
+Installation / Upgrade
+Uninstalling
+List
+Status
+Verifying
+[~]$ dpkg -i telnet.deb
+[~]$ dpkg -r telnet.deb
+[~]$ dpkg –l telnet
+[~]$ dpkg –s telnet
+[~]$ dpkg –p <path to file>
+====================
+/etc/apt/sources.list
+$ apt update
+apt upgrade
+/apt edit-sources
+==================
+apt install telnet
+[~]$ apt remove telnet
+[~]$ apt search telnet
+[~]$ apt list | grep telnet
+=================
+Viewing File Sizes
+du -sk test.img
+du -sh test.img
+ls –lh test.img
+====================
+Archiving Files
+tar –cf test.tar file1 file2 file3
+ls –ltr test.tar
+tar -tf test.tar
+tar –xf test.tar
+tar –zcf test.tar file1 file2 file3
+108running
+===============================
+Compressing: note for extra netstat -tulpn | grep LISTEN
+bzip2 test.img==== bzip2
+du -sh test.img.bz2-- to check the size of the file
+=======================
+gzip test1.img
+du -sh test1.img.gz
+====================
+xz test2.img
+du -sh test2.img.xz
+===================
+uncompressing
+bunzip2
+bunzip2 test.img.bz2
+====================
+gunzip
+[~]$ du -sh test2.img.gz
+99M test1.img
+[~]$ unxz test2.img
+unxz
+[~]$ du -sh test2.img.xz
+99M test2.img
+===============
+Compressing Files
+zcat hostfile.txt.bz2
+zcat / bzcat /xzcat
+127.0.0.1 localhost
+127.0.1.1 Minty-Bionic
+# The following lines are desirable for IPv6
+capable hosts
+::1 ip6-localhost ip6
+============================
+Searching for Files and Directories
+locate City.txt
+updatedb
+find /home/michael -name City.txt
+===============
+GREP
+grep second sample.txt
+grep capital sample.txt
+=======================
+grep -i capital sample.txt
+grep -r ”third line" /home/michael
+grep –r
+./sample.txt:And then the third line.
+===============================
+grep -v “printed" sample.txt
+grep –v
+This is the first line.
+Followed by the second line.
+And then the third line.
+The fourth line has CAPITAL LETTERS
+============================
+grep -w
+linux exam on 19th
+[~]$ grep –vw exam examples.txt
+grep –w & -v
+grep examples
+[~]$ grep exam examples.txt
+grep examples
+linux exam on 19th
+[~]$ grep -A1 Arsenal premier-league-table.txt
+grep –A
+1 Arsenal
+2 Liverpool
+[~]$ grep -B1 4 premier-league-table.txt
+grep –B
+3 Chelsea
+4 Manchester Cit
+=========================
+IO REDIRECTION
+echo $SHELL > shell.txt
+echo “This is the Bash shell” >> shell.txt
+=================================
+COMMAND LINE PIPES
+grep Hello sample.txt | less
+less sample.txt
+============================
+echo $SHELL | tee shell.txt
+/bin/bash
+[~]$ cat shell.txt
+/bin/bash
+[~]$ echo “This is the bash shell”| tee -a
+shell.txt
+This is the bash shell
+[~]$ cat shell.txt
+/bin/bash
+This is the Bash shell
+========================
+VIM
+VIM= VI Improved
+/line
+yy-to copy
+p-to paste
+Find Next-n
+previous- N
+which vi
+====================================
+Security-and-File Permissions
+//Basic Security and Identifying File Types
+//Creating Users and Groups
+//Labs: Users and Groups
+//Managing file permission and ownership
+//Special Directories and Files
+//Labs: Special Directories and Files
+======================
+Linux Accounts
+Linux Security
+//cat /etc/passwd
+//cat /etc/group
+//id michael
+//grep -i michael /etc/passwd
+========================
+Account Types
+User Account-
+Superuser Account--UID = 0
+System Accounts-- ssh mail
+Service Accounts--nginx,Mercury
+id,who,last
+su –
+cat /etc/sudoers
+grep -i ^root /etc/passwd
+============================
+Access Control Files
+grep -i ^bob /etc/passwd
+grep -i ^bob /etc/shadow
+grep -i ^bob /etc/group
+grep -i ^bob /etc/passwd
+grep -i ^bob /etc/group
+============================
+Managing Users
+useradd bob,grep -i bob /etc/passwd,grep -i bob /etc/shadow,passwd bob,whoami,
+//Managing Users
+//useradd -u 1009 -g 1009 -d /home/robert -s /bin/bash -c ”Mercury Project member" bob
+//userdel bob
+//groupadd –g 1011 developer
+//groupdel developer
+=============================
+Linux File Permissions
+ls -l bash-script.sh
+owner
+u
+Group
+g
+Others
+=================
+Modifying File Permissions
+chomd u+rwx test.file
+chmod ugo+r-x test-file 
+chmod o-rwx test-file 
+chmod u+rwx,g+r-x,o-rwx test-file
+chmod 777 test-file 
+chmod 750 test-file 
+==============
+chown owner:group file
+chown bob:developer test-file - change owner to bob and group to Developer of the test-file
+chown bob andoid.apk-- change only owner
+chgrp android test-file -only the group
+gorupadd biken:bob test-file
+=============================
+SSH
+//ssh <hostname OR IP Address>
+//ssh <user>@<hostname OR IP Address>
+//ssh –l <user> <hostname OR IP Address>
+=================================================
+PASSWORD-LESS SSH
+Key Pair = Private Key +Public Key
+ssh-keygen –t rsa-- to generate ssh public and private key
+Public Key: /home/bob/.ssh/id_rsa.pub
+Private Key: /home/bob/.ssh/id_rsa
+ssh-copy-id bob@devapp01==== to copy to remote server
+cat /home/bob/.ssh/authorized_keys
+ssh devapp01
+
+=======================================================
+SCP
+scp /home/bob/caleston-code.tar.gz devapp01:/home/bob
+scp –pr /home/bob/media/ devapp01:/home/bob
+=====================================
+LINUX-NETWORKING BASICS
+DNS
+Networking Basics
+Labs: Networking Basics
+Troubleshooting
+===========================================
+ping 192.168.1.11
+ping db
+ cat >> /etc/hosts
+192.168.1.11 db
+hostname
+===================
+Name Resolution
+cat /etc/resolv.conf
+nameserver 192.168.1.100
+cat /etc/nsswitch.conf
+=======================
+Domain Names
+.  == Root level doamin
+.com  ==Top Level Domain Name
+Subdomain===www maps apps
+====================
+Record Types
+A-Record ---web-server--192.168.1.1
+AAAA--------web-server====2001:0db8:85a3:0000:0000:8a2e:0370:7334
+CNAME ----------food.web-server===========eat.web-server, hungry.web-server
+===================
+nslookup
+nslookup www.google.com
+dig www.google.com
+======================
+Switching & Routing
+ip link--- to check the inteface
+==================
+Routing
+route
+ip route add 192.168.2.0/24 via 192.168.1.1
+ip route add 192.168.2.0/24 via 192.168.1.1
+ip addr add 192.168.1.10/24 dev eth0 
+traceroute 192.168.2.5
+netstat -an | grep 80 | grep -i LISTEN
+ip link set dev enp1s0f1 up
+=====================================
+Storage Basics
+//Disk Partitions
+//Linux Filesystems (EXT2-EXT4)
+//Labs: Partitions and Filesystems 
+//NFS
+//External Storage Devices (DAS/NAS/SAN)
+//Logical Volume Manager
+//Labs: LVM
+=====================
+ lsblk
+ ls -l /dev/ | grep "^b"
+  sudo fdisk -l /dev/sda
+=================================
+PARTITION TYPES –
+PRIMARY, EXTENDED AND LOGICAL
+gdisk /dev/sdb
+gdisk /dev/sdb
+to see list of options use ? 
+n
+1
+2048
+=600M
+8300
+w
+y
+sudo apt install gdisk -y// yum install gdisk -y
+=====================
+Linux Filesystem
+mkfs.ext4 /dev/sdb1
+ mkdir /mnt/ext4; 
+ mount /dev/sdb1 /mnt/ext4
+  mount | grep /dev/sdb1 
+  df -hP | grep /dev/sdb1 
+  sudo blkid /dev/vdc
+==========================
+/etc/fstab
+echo "/dev/vdb /mnt/data ext4 rw 0 0" >> /etc/fstab
+sudo vi /etc/fstab /dev/vdb /mnt/data ext4 rw 0 0 
+
+============================
+Network Filesystem
+ /etc/exports
+ 
+mount 10.61.112.101:/software/repos /mnt/software/repos
+exportfs -a
+exportfs -o 10.61.35.201:/software/repos
+====================================
+DAS, NAS & SAN
+DAS = Direct Attached Storage
+NAS = Network Attached Storage
+SAN = Storage Area Network
+========================
+Logical Volume Manager
+LVM
+apt-get install lvm2
+ pvcreate /dev/sdb
+Physical volume "/dev/sdb" successfully created
+$ vgcreate caleston_vg /dev/sdb
+ pvdisplay
+ vgdisplay
+ lvcreate –L 1G –n vol1 caleston_vg
+lvdisplay
+ lvs
+ mkfs.ext4 /dev/caleston_vg/vol1
+mount –t ext4 /dev/caleston_vg/vol1 /mnt/vol1 
+ vgs
+ lvresize -L +1G -n /dev/caleston_vg/vol1
+df –hP /mnt/vol1
+resize2fs /dev/caleston_vg/vol1
+Lab for Volume
+sudo pvcreate /dev/vdb /dev/vdc
+sudo vgcreate caleston_vg /dev/vdb /dev/vdc
+sudo lvcreate -L +1G -n data caleston_vg
+sudo mkfs.ext4 /dev/caleston_vg/data
+sudo mkdir /mnt/data
+sudo mount /dev/caleston_vg/data /mnt/data
+=======================================
+SYSTEMD and Service-Management
+let's create a service file of the project
+/etc/systemd/system/project-mercury.service
+[Unit]
+Describtion=This done by biken
+Documenetation=www.https://biken.com
+After=postgresql.service
+[Service]
+ExecStart= /bin/bash /user/bin/project-mercury.sh
+User=Mercury
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy graphical.target
+======================================
+systemctl daemon-reload
+systemctl start project-mercury.service
+
+
+Create your own SYSTEMD service
+SYSTEMD Tools systemctl and journalctl
+systemctl edit project-mercury --full
+systemctl list-units --all
+systemctl list-units
+journalctl 
+journalctl -b
+journalctl -u docker.service
+
+
+Labs: SYSTEMD
+==========================
+======================================================================================
+Only Lab Collection
+==========================
+
+WORKING WITH SHELL – I, LAB: WORKING WITH THE SHELL
+related to directories and how to make direstories with -p option
+=========================
+WORKING WITH SHELL – I, LAB: LINUX BASH PROMPT
+Change the SHELL for Bob from bash to Bourne Shell
+sudo chsh -s /bin/sh bob
+====================
+Create a new environment variable called PROJECT=MERCURY and make it persistent by adding the variable to the ~/.profile file.
+ echo 'export PROJECT=MERCURY' >> /home/bob/.profile
+ echo 'alias up=uptime' >> /home/bob/.profile
+ echo 'PS1="[\d]\u@\h:\w$"' >> ~/.profile
+ ===================================
+ LINUX CORE CONCEPTS, LAB: LINUX KERNEL
+ dmesg
+ ===========================
+ LINUX CORE CONCEPTS, LAB: LINUX KERNEL MODULES BOOT AND FILETYPES
+sudo ls -l /sbin/init
+systemctl get-default
+sudo systemctl set-default multi-user.target
+sudo file /root/firefox.deb
+sudo lshw
+===========================
+PACKAGE MANAGEMENT, LAB: YUM AND RPM
+ssh centos-lab
+rpm -qa | grep wget-- to get the info of any package with rpm
+yum repolist
+sudo yum provides tcpdump
+=======================================
+PACKAGE MANAGEMENT, LAB – DPKG AND APT
+sudo dpkf -i /root/firefox.deb
+apt search chromium -- check for the package
+sudo apt remove -y firefox
+========================================
+Storage in Linux:
+Where is my storage:
+=================
+https://kodekloud.com/courses/the-linux-basics-course/
+netstat -tulpn | grep LISTEN
+sudo ss -tulw
+sudo ss -tulwn
+sudo ss -tulwn | grep LISTEN
+
+sudo lsof -i -P -n
+$ sudo lsof -i -P -n | grep LISTEN
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
